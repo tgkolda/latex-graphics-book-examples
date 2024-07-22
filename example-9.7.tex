@@ -1,0 +1,50 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** PGFPLOTS library ***
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+
+%% Introductory Text
+Example 9.7 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\begin{tikzpicture}
+  \begin{groupplot}[
+      group style={
+        group size=2 by 2, horizontal sep=1cm, vertical sep=1.5cm,
+        xlabels at=edge bottom, ylabels at=edge left,
+      },
+      scale only axis, width=4cm, height=2cm,
+      xlabel=$x$, xmin=0.5,xmax=4.5,xtick distance=1,
+      ylabel=$y$, ylabel near ticks,
+      ymin=0, ymax=15, ytick distance=3
+    ]
+    \nextgroupplot[title=Dataset A]
+    \addplot[blue,mark=*] table[y=A]{data.dat};
+    \nextgroupplot[title=Dataset B]
+    \addplot[red,mark=*] table[y=B]{data.dat};
+    \nextgroupplot[title=Dataset C]
+    \addplot[orange,mark=*] table[y=C]{data.dat};
+    \nextgroupplot[title=Dataset D]
+    \addplot[teal,mark=*] table[y=D]{data.dat};
+  \end{groupplot}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

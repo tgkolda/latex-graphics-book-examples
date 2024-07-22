@@ -1,0 +1,32 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable TikZ ***
+\usepackage{tikz}
+
+%% *** TikZ library ***
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+%% Introductory Text
+Example 4.15 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\tikzset{shorten/.style={shorten >=#1,shorten <=#1}}
+\begin{tikzpicture}[every node/.style={circle,draw}]
+  \node (A) {A};
+  \node[above right=of A] (B) {B};
+  \path[draw,shorten=2mm,<->] (A) -- (B);
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

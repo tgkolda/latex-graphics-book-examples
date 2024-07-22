@@ -1,0 +1,44 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** LaTeX package ***
+\usepackage{etoolbox}
+
+%% *** PGFPLOTS library ***
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+
+%% Introductory Text
+Example 10.19 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\begin{tikzpicture}
+  \begin{groupplot}[group style={group size=2 by 2},
+      scale only axis, width=4cm, height=2cm,]
+    \def\tmp{}
+    \pgfplotsforeachungrouped \ltr in {A,B,C,D}{
+      \eappto\tmp{
+        \noexpand\nextgroupplot[title={Dataset \ltr}]
+        \noexpand\addplot[blue,mark=*] table[y=\ltr]{data.dat};
+      }}
+    \tmp
+  \end{groupplot}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

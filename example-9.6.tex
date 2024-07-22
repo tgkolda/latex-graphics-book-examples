@@ -1,0 +1,43 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 9.6 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\pgfplotstableread{data.dat}{\data}
+\begin{tikzpicture}
+  \begin{axis}[
+      scale only axis, width=3.5cm,height=5.5cm,
+      every axis plot/.style={thick,
+        mark size=4pt},
+      legend entries={Alpha,Beta,Gamma,Delta},
+      legend style={ultra thin,fill opacity=0.7,
+        text opacity=1,font=\footnotesize}
+    ]
+    \addplot[blue] table[y=A]{\data};
+    \addplot[red,mark=x] table[y=B]{\data};
+    \addplot[orange,mark=+] table[y=C]{\data};
+    \addplot[teal,mark=star] table[y=D]{\data};
+  \end{axis}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

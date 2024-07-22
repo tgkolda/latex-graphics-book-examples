@@ -1,0 +1,48 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 10.10 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\pgfplotsset{every axis/.style={scale only axis, width=4cm, height=1.5cm}}
+\begin{tikzpicture}
+  \begin{axis}[name=A,title=Dataset A]
+    \addplot[blue,mark=square*] table[y=A]{data.dat};
+  \end{axis}
+  \path (A.right of south east) ++(0.5,0) coordinate (BB);
+  \begin{axis}[name=B,anchor=left of south west,at=(BB),title=Dataset B]
+    \addplot[red,mark=*] table[y=B]{data.dat};
+  \end{axis}
+  \path (A.below south west) ++(0,-0.5) coordinate (CC);
+  \begin{axis}[name=C,anchor=above north west,at=(CC),title=Dataset C]
+    \addplot[orange,mark=halfsquare*] table[y=C]{data.dat};
+  \end{axis}
+  \path (B.west |- C.south) coordinate (DD);
+  \begin{axis}[anchor=south west,at=(DD),title=Dataset D]
+    \addplot[teal,mark=pentagon*] table[y=D]{data.dat};
+  \end{axis}
+  % Show the coordinates (just for demonstration)
+  \fill[gray] foreach \nd/\loc in {BB/below,CC/above,DD/below left} {
+    (\nd) circle(2pt) node[\loc]{\nd}};
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

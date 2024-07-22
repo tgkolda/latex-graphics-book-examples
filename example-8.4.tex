@@ -1,0 +1,34 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** For advanced table manipulations ***
+\usepackage{pgfplotstable}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 8.4 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\pgfplotstableread[trim cells=true]{rowdata.dat}{\byrow}
+\pgfplotstabletranspose[colnames from=idx,input colnames to=idx]
+  {\bycol}{\byrow}
+\pgfplotstabletypeset[string type,font=\ttfamily]\bycol
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

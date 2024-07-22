@@ -1,0 +1,8 @@
+# Del Valle Reservoir (California) Storage 
+# taf:thousand acre feet, af:acre feet
+year {min taf} {max taf} {min af} {max af}
+2018 24.966 40.006 24966 40006
+2019 24.975 40.876 24975 40876
+2020 25.17 38.626 25170 38626
+2021 28.926 40.633 28926 40633
+2022 34.393 42.874 34393 42874

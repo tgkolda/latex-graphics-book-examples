@@ -1,0 +1,38 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** PGFPLOTS library ***
+\usepgfplotslibrary{fillbetween}
+
+\begin{document}
+
+%% Introductory Text
+Example 9.9 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\begin{tikzpicture}
+  \begin{axis}[scale only axis, width=6cm, height=3cm]
+    \addplot[name path=mydata,blue,mark=*] table{data.dat};
+    \addplot[name path=zero,draw=none]
+      table[col sep=comma,row sep=\\]{1,0\\4,0\\};
+    \addplot [fill=gray!50] fill between[of=mydata and zero,
+      soft clip={domain=1.5:3}];
+  \end{axis}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

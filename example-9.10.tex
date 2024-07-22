@@ -1,0 +1,50 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** PGFPLOTS library ***
+\usepgfplotslibrary{fillbetween}
+
+\begin{document}
+
+%% Introductory Text
+Example 9.10 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\pgfplotsset{table/col sep=comma}
+\begin{tikzpicture}
+  \begin{axis}[
+      scale only axis,
+      width=8cm, height=3cm, ymin=2, ymax=4, enlarge x limits=false,
+      xlabel={Cumulative Number of Samples},
+      legend pos=outer north east, axis on top,
+      legend entries={{Sample mean, $\bar \mu$},{Mean, $\mu$},
+        90\% Confidence},
+      cib/.style={green,dashed,thick,forget plot} % Custom style
+    ]
+    \addplot[blue,mark=*,mark size=1pt]
+      table[y=sample mean] {hoeffding.csv};
+    \addplot[red, thick] table[row sep=\\]{1,3\\100,3\\};
+    \addplot[cib, name path=upper]
+      table[y expr=3+\thisrow{confidence interval}] {hoeffding.csv};
+    \addplot[cib, name path=lower]
+      table[y expr=3-\thisrow{confidence interval}] {hoeffding.csv};
+    \addplot[fill=green!5] fill between [of=upper and lower];
+  \end{axis}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

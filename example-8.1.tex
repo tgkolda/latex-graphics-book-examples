@@ -1,0 +1,45 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 8.1 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\pgfplotsset{scale only axis,
+  width=3cm, height=3cm,
+  xlabel near ticks, ylabel near ticks}
+\begin{tikzpicture}
+  \begin{axis}[ymin=0, ybar stacked,
+      title=Del Valle Reservoir,
+      ylabel=storage (in 1000s), xlabel=year,
+      legend entries={min,max},
+      legend pos=south east ]
+    \addplot[orange,fill] table[
+      x expr=\coordindex+18,
+      y expr=\thisrowno{3}/1000]{res.dat};
+    \addplot[blue,fill] table[
+      x expr=\thisrow{year}-2000,
+      y expr=(\thisrow{max af}-
+        \thisrow{min af})/1000]{res.dat};
+  \end{axis}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

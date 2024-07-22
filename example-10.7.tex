@@ -1,0 +1,41 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 10.7 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\begin{tikzpicture}[
+    arw/.style={<-,shorten <=2mm,shorten >=4mm,thick},
+    lbl/.style={draw,fill=white,fill opacity=0.8}
+  ]
+  \begin{axis}[scale only axis,width=6cm,height=2cm,xmin=1.5]
+    \addplot[mark=*] table{data.dat};
+    \draw[red,arw] (axis cs:2,5) -- ++(axis direction cs:0,-1.5)
+       node[lbl] {$(2,5)$};
+    \draw[blue,arw] (axis cs:3,3.3) -- (rel axis cs:0.5,1)
+       node[lbl] (A) {$(3,3.3)$};
+    \coordinate (B) at (axis cs:4,2.2);
+  \end{axis}
+  \draw[orange,arw] (B) -- (B|-A) node[lbl] {$(4,2.2)$};
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

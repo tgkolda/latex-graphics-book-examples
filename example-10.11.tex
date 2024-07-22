@@ -1,0 +1,46 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** PGFPLOTS library ***
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+
+%% Introductory Text
+Example 10.11 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\begin{tikzpicture}
+  \pgfplotsset{scale only axis,table/col sep=comma,
+    m1/.style={orange,mark=diamond*,mark size=3pt},m2/.style={cyan,mark=*}}
+  \begin{groupplot}[width=3cm, height=2cm,
+      group style={group size=2 by 1, group name=grp, ylabels at=edge left},
+      ylabel={runtime (sec)}, ymin=5, ymax=2e4, ymode=log,
+      legend columns=-1, legend entries={Method 1~~~, Method 2}]
+    \nextgroupplot[title=CPU,legend to name={lgd}]
+    \addplot[m1] table[y=M1]{runtime.csv};
+    \addplot[m2] table[y=M2]{runtime.csv};
+    \nextgroupplot[title=GPU,legend to name={lgd2}]
+    \addplot[m1] table[y=M3]{runtime.csv};
+    \addplot[m2] table[y=M4]{runtime.csv};
+  \end{groupplot}
+  \path (grp c1r1.below south east) -- (grp c2r1.below south west)
+    node[midway, below] {\pgfplotslegendfromname{lgd}};
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

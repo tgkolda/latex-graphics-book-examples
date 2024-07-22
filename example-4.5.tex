@@ -1,0 +1,30 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable TikZ ***
+\usepackage{tikz}
+
+%% *** TikZ library ***
+\usetikzlibrary{math}
+
+\begin{document}
+
+%% Introductory Text
+Example 4.5 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\begin{tikzpicture}
+  \pgfmathsetmacro{\t}{10^(-1)}
+  \node[rounded corners,draw] (A) {Ti$k$Z math says $10^{-1}=\t$};
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

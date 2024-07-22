@@ -1,0 +1,56 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+%% *** PGFPLOTS library ***
+\usepgfplotslibrary{groupplots}
+%% *** LaTeX package ***
+\usepackage{subcaption,float}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 10.9 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\tikzset{subcap/.style={below,text width=4cm,inner ysep=0em}}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \begin{groupplot}[
+        group style={group name=foo, group size=2 by 1},
+        scale only axis, width=4cm, height=1.5cm,
+        xmin=0.5,xmax=4.5,xtick distance=1,
+        ymin=0,ymax=12,ylabel near ticks ]
+      \nextgroupplot \addplot[blue,mark=*] table[y=A]{data.dat};
+      \nextgroupplot \addplot[red,mark=*] table[y=B]{data.dat};
+    \end{groupplot}
+    % Adding subcaptions
+    \node[subcap] at (foo c1r1.below south)
+      {\subcaption{Dataset A}\label{fig:a}};
+    \node[subcap] at (foo c2r1.below south)
+      {\subcaption{Dataset B}\label{fig:b}};
+  \end{tikzpicture}
+  \caption{Group plot with subcaptions}
+  \label{fig:test}
+\end{figure}
+
+In Fig.~\ref{fig:test}, Dataset A is shown in Fig.~\ref{fig:a},
+and Dataset B is shown in Fig.~\ref{fig:b}.
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}

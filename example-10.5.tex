@@ -1,0 +1,48 @@
+\documentclass{article}
+
+%% Denote paragraphs with vertical space rather than indenting (not critical)
+\usepackage{parskip}
+
+%% Support for URL in introductory text (not needed for main example)
+\usepackage{url}
+
+%% *** Enable PGFPLOTS (automatically enables TikZ) ***
+\usepackage{pgfplots}
+
+%% Prevent some PGFPLOTS messages (not critical)
+\pgfplotsset{compat=1.18,compat/show suggested version=false}
+
+
+\begin{document}
+
+%% Introductory Text
+Example 10.5 from the book\\
+\emph{Unlocking LaTeX Graphics: A Concise Guide to Ti$k$Z/PGF and PGFPLOTS}.\\
+For more information, visit \url{https://latex-graphics.com}.
+\par\bigskip
+
+%% *** START OF EXAMPLE CODE ***
+\pgfplotsset{
+  every axis/.append style={scale only axis,width=3cm, height=2.5cm,
+    xtick distance=1, ytick distance=1}
+}
+\begin{tikzpicture}
+  \begin{axis}[title=default (fit axes to data)]
+    \addplot[blue,mark=*] table{data.dat};
+  \end{axis}
+\end{tikzpicture}
+~~~~ % spaces
+\begin{tikzpicture}
+  \begin{axis}[axis equal, title={\texttt{axis equal}}]
+    \addplot[blue,mark=*] table{data.dat};
+  \end{axis}
+\end{tikzpicture}
+~~~~ % spaces
+\begin{tikzpicture}
+  \begin{axis}[axis equal image, title={\texttt{axis equal image}}]
+    \addplot[blue,mark=*] table{data.dat};
+  \end{axis}
+\end{tikzpicture}
+%% *** END OF EXAMPLE CODE ***
+
+\end{document}
