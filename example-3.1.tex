@@ -23,15 +23,12 @@ For more information, visit \url{https://latex-graphics.com}.
     nd/.style={draw,fill=yellow!50,text=blue,font=\bfseries,
       rounded corners},
     arw/.style={thick,shorten >=1mm,shorten <=1mm,->} ]
-  \draw[help lines] grid(10,3);
-  \node[nd] (Precision) at (1,1.5) {Precision};
-  \node[nd] (Creativity) at (3,0) {Creativity};
-  \node[nd] (Clarity) at (3,3)  {Clarity};
-  \node[nd,font=\footnotesize] (Graphics) at (6,1.5) {Graphics convey complex ideas with simple elegance};
+  \draw[help lines] grid(10,2);
+  \node[nd] (Precision) at (1,0.5) {Precision};
+  \node[nd] (Clarity) at (3,2)  {Clarity};
+  \node[nd,font=\footnotesize] (Graphics) at (6,0.5) {Graphics convey complex ideas with simple elegance};
   \draw[arw] (Precision) -- (Clarity);
   \draw[arw] (Graphics) -- (Clarity);
-  \draw[arw] (Creativity) -- (Graphics);
-  \draw[arw] (Creativity) -- (Precision);
 \end{tikzpicture}
 %% *** END OF EXAMPLE CODE ***
 

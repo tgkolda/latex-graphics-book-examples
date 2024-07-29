@@ -23,7 +23,7 @@ For more information, visit \url{https://latex-graphics.com}.
   \path (0,3) node (A){A};
   \path (2,3) node (B){B} edge(A);
   \path (0,1) node (C){C} edge[->](B) edge[red](A);
-  \path[draw=red,ultra thick] (2,1) node (D) {D} edge(B) (1,0) node (E){E} edge(D);
+  \path[draw=red,ultra thick] (2,1) node (D){D} edge(B) (1,0) node (E){E} edge(D);
   \path[thick] (E) edge[dotted](C) edge[dotted](A)
       (D) edge[dashed](A);
 \end{tikzpicture}

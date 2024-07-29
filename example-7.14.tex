@@ -22,14 +22,15 @@ For more information, visit \url{https://latex-graphics.com}.
 \par\bigskip
 
 %% *** START OF EXAMPLE CODE ***
-\pgfplotsset{table/col sep=comma}
+\pgfplotsset{scale only axis, xlabel near ticks, ylabel near ticks, table/col sep=comma}
 \begin{tikzpicture}
-  \begin{semilogyaxis}[scale only axis, xlabel near ticks, ylabel
-      near ticks, width=3.4in, height=1.25in, ybar, xtick=data,
-      enlarge x limits=0.2, ylabel=Run time (sec), xlabel=Dataset,
+  \begin{semilogyaxis}[width=3.4in, height=1.25in,
+      ybar, xtick=data, enlarge x limits=0.2,
+      ylabel=Run time (sec), xlabel=Dataset,
       legend entries={Method 1, Method 2, Method 3, Method 4},
-      legend pos=outer north east, every axis plot post/.append
-      style={draw=black, fill}, axis on top]
+      legend pos=outer north east,
+      every axis plot post/.append style={draw=black, fill},
+      axis on top]
     \addplot[blue] table[y=M1] {runtime.csv};
     \addplot[orange] table[y=M2] {runtime.csv};
     \addplot[gray] table[y=M3] {runtime.csv};

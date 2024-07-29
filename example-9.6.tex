@@ -26,12 +26,10 @@ For more information, visit \url{https://latex-graphics.com}.
 \begin{tikzpicture}
   \begin{axis}[
       scale only axis, width=3.5cm,height=5.5cm,
-      every axis plot/.style={thick,
-        mark size=4pt},
+      every axis plot/.style={thick,mark size=4pt},
       legend entries={Alpha,Beta,Gamma,Delta},
       legend style={ultra thin,fill opacity=0.7,
-        text opacity=1,font=\footnotesize}
-    ]
+        text opacity=1,font=\footnotesize}]
     \addplot[blue] table[y=A]{\data};
     \addplot[red,mark=x] table[y=B]{\data};
     \addplot[orange,mark=+] table[y=C]{\data};

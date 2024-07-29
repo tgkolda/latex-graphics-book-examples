@@ -28,14 +28,18 @@ For more information, visit \url{https://latex-graphics.com}.
 \begin{tikzpicture}
   \pgfplotstableread[col sep=comma]{x, f1, f2
     -1.000000,4.525804,3.499907
-    -0.500000,NaN,2.439197
+    -0.500000,nan,2.439197
     0.000000,3.537790,0.595883
     0.500000,2.500406,0.139694
-    1.000000,1.702716, -1.563586
+    1.000000,1.702716,-1.563586
   }{\mydata}
-  \begin{axis}[scale only axis,width=3cm, height=3cm]
-    \addplot[blue,dashed,mark=*,every mark/.append style={solid}] table{\mydata};
-    \addplot[brown,mark=square*] table[y=f2]{\mydata};
+  \begin{axis}[scale only axis,
+      width=3cm, height=3cm]
+    \addplot[blue,dashed,mark=*,
+        every mark/.append style={solid}]
+      table{\mydata};
+    \addplot[brown,mark=square*]
+      table[y=f2]{\mydata};
   \end{axis}
 \end{tikzpicture}
 %% *** END OF EXAMPLE CODE ***

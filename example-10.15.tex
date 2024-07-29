@@ -28,11 +28,12 @@ For more information, visit \url{https://latex-graphics.com}.
       title=Scatter \& Line Plot,
       legend entries={Class 1,Class 2,Line A} ]
     \addplot[only marks, scatter,
-       scatter src=explicit symbolic,
-       scatter/classes={
+        scatter src=explicit symbolic,
+        scatter/classes={
         a={blue,mark=*},b={red,mark=square*}}]
       table[meta=class,col sep=comma]{points.csv};
-    \addplot[orange,thick,mark=star,mark size=4pt] table{data.dat};
+    \addplot[orange,thick,mark=star,mark size=4pt]
+      table{data.dat};
   \end{axis}
 \end{tikzpicture}
 %% *** END OF EXAMPLE CODE ***

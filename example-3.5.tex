@@ -20,18 +20,15 @@ For more information, visit \url{https://latex-graphics.com}.
 
 %% *** START OF EXAMPLE CODE ***
 \begin{tikzpicture}[
-    nd/.style={draw,thick,fill=yellow!50,text width=4cm, inner sep=0.6em,
-      align=flush center, minimum height=0.8cm, rounded corners},
+    nd/.style={draw,thick,fill=yellow!50,text width=4cm,
+      align=flush center, minimum height=0.7cm, rounded corners},
     arw/.style={ultra thick,shorten >=1mm,shorten <=1mm,->}]
-  \draw[help lines] grid(7,4);
-  \node[nd] (Precision) at (1,2) {Precision};
-  \node[nd] at (3,0) (Creativity) {Creativity};
-  \node[nd] at (3,4) (Clarity) {Clarity};
-  \node[nd] at (6,2) (Graphics) {Graphics convey complex ideas with simple elegance};
+  \draw[help lines] grid(7,3);
+  \node[nd] (Precision) at (1,1) {Precision};
+  \node[nd] at (3,3) (Clarity) {Clarity};
+  \node[nd] at (6,1) (Graphics) {Graphics convey complex ideas with simple elegance};
   \draw[arw] (Precision) -- (Clarity);
   \draw[arw] (Graphics) -- (Clarity);
-  \draw[arw] (Creativity) -- (Graphics);
-  \draw[arw] (Creativity) -- (Precision);
 \end{tikzpicture}
 %% *** END OF EXAMPLE CODE ***
 

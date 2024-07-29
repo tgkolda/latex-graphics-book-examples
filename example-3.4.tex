@@ -22,15 +22,12 @@ For more information, visit \url{https://latex-graphics.com}.
 \begin{tikzpicture}[
     every node/.style={draw,thick,fill=yellow!50,font=\bfseries,align=left},
     arw/.style={ultra thick,shorten >=1mm,shorten <=1mm,->}]
-  \draw[help lines] grid(7,3);
-  \node (Precision) at (1,1.5) {Precision};
-  \node at (3,0) (Creativity) {Creativity};
-  \node at (3,3) (Clarity) {Clarity};
-  \node[font=\footnotesize] at (6,1.5) (Graphics) {Graphics convey complex ideas\\ with simple elegance};
+  \draw[help lines] grid(7,2);
+  \node (Precision) at (1,0.5) {Precision};
+  \node at (3,2) (Clarity) {Clarity};
+  \node[font=\footnotesize] at (6,0.5) (Graphics) {Graphics convey complex ideas\\ with simple elegance};
   \draw[arw] (Precision) -- (Clarity);
   \draw[arw] (Graphics) -- (Clarity);
-  \draw[arw] (Creativity) -- (Graphics);
-  \draw[arw] (Creativity) -- (Precision);
 \end{tikzpicture}
 %% *** END OF EXAMPLE CODE ***
 
