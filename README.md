@@ -1,5 +1,5 @@
 # Examples from _Unlocking LaTeX Graphics_
-This book contains the source codes for the examples from the book _Unlocking LaTeX Graphics: A Concise Guide to TikZ/PGF and PGFPLOTS_. See https://latex-graphics.com for more details.
+This repository contains the source codes for the examples from the book _Unlocking LaTeX Graphics: A Concise Guide to TikZ/PGF and PGFPLOTS_. See https://latex-graphics.com for more details.
 
 # On Overleaf
 
